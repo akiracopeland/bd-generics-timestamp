@@ -7,10 +7,7 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TimestampedDataTest {
     private static final ZonedDateTime SAMPLE_TIMESTAMP = ZonedDateTime.parse("2019-07-31T08:00:19Z[UTC]");
@@ -27,7 +24,7 @@ public class TimestampedDataTest {
 
         // THEN
         // PARTICIPANTS: data is correct
-        fail("Replace with an assertion that data stored in timestampedData is what we expect");
+        assertEquals(data, timestampedData.getData());
 
         // timestamp is correct
         assertEquals(timestamp, timestampedData.getTimestamp(), "Expected timestamp to match");
@@ -44,7 +41,7 @@ public class TimestampedDataTest {
 
         // THEN
         // PARTICIPANTS: data is null
-        fail("Replace with an assertion that data stored in timestampedData is null");
+        assertNull(timestampedData.getData(), "Expected instance with null data");
 
         // timestamp is correct
         assertEquals(timestamp, timestampedData.getTimestamp(), "Expected timestamp to match");
@@ -75,7 +72,7 @@ public class TimestampedDataTest {
 
         // THEN
         // PARTICIPANTS - data is correct
-        fail("Replace with an assertion that data stored in timestampedData is what we expect");
+        assertEquals(data, timestampedData.getData(), "Expected correct data");
 
         // timestamp is close to now (within 5 seconds)
         Duration durationBetweenTimestampAndNow = Duration.between(timestampedData.getTimestamp(), ZonedDateTime.now());
@@ -86,15 +83,17 @@ public class TimestampedDataTest {
     @Test
     void dataConstructor_withNullData_constructsInstance() {
         // GIVEN - null data
+        String data = null;
 
         // WHEN - construct Timestamped data
+        TimestampedData<String> timestampedData = new TimestampedData(data);
 
         // THEN
         // data is null
+        assertNull(timestampedData.getData(), "Expected to construct instance with null data");
 
         // timestamp is close to now (within 5 seconds)
 
-        fail("Remove after implementing this test.");
 
     }
 }

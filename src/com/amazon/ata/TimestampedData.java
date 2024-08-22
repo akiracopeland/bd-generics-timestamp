@@ -37,6 +37,8 @@ public class TimestampedData<T> {
         this(data, ZonedDateTime.now());
     }
 
+    public T getData() { return this.data; }
+
     // PARTICIPANTS: implement getter for data here
     public ZonedDateTime getTimestamp() {
         return timestamp;
